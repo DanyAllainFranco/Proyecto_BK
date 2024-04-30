@@ -27,7 +27,7 @@ namespace Proyecto_BK.API.Controllers
         {
 
             var list = _generalServices.ListDepto();
-            return Ok(list);
+            return Ok(list.Data);
         }
         [HttpGet("API/[controller]/Fill")]
 

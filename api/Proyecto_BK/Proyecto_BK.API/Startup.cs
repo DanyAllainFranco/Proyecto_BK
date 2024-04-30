@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 using Proyecto_BK.BusinessLogic.Services;
 
-namespace Sistema_Votaciones.API
+namespace Proyecto_BK.API
 {
     public class Startup
     {
@@ -40,6 +40,16 @@ namespace Sistema_Votaciones.API
             services.BusinessLogic();
             services.AddAutoMapper(typeof(Startup));
             services.AddHttpContextAccessor();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowSpecificOrigin",
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin()
+                               .AllowAnyHeader()
+                               .AllowAnyMethod();
+                    });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,7 +59,7 @@ namespace Sistema_Votaciones.API
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Sistema_Votaciones.API v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Proyecto_BK.API v1"));
             }
 
             app.UseHttpsRedirection();
@@ -57,7 +67,7 @@ namespace Sistema_Votaciones.API
             app.UseRouting();
 
             app.UseAuthorization();
-
+            app.UseCors("AllowSpecificOrigin");
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
