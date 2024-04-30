@@ -13,6 +13,10 @@ namespace Proyecto_BK.API.Extensions
         public MappingProfileExtensions()
         {
             CreateMap<DepartamentoViewModel, tbDepartamentos>().ReverseMap();
+            CreateMap<MunicipioViewModel, tbMunicipios>().ReverseMap();
+            CreateMap<EstadoCivilViewModel, tbEstadosCiviles>().ReverseMap();
+            CreateMap<ClienteViewModel, tbClientes>().ReverseMap();
+            CreateMap<EmpleadoViewModel, tbEmpleados>().ReverseMap();
 
         }
     }
