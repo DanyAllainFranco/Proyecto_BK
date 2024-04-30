@@ -14,7 +14,7 @@ namespace Proyecto_BK.BusinessLogic.Services
         public static void DataAcces(this IServiceCollection service, string conn)
         {
             service.AddScoped<DepartamentoRepository>();
-      
+
             //service.AddScoped<PantallaRepository>();
             //service.AddScoped<PantallaPorRolRepository>();
             //service.AddScoped<DispositivoRepository>();
@@ -28,7 +28,7 @@ namespace Proyecto_BK.BusinessLogic.Services
             //service.AddScoped<PaqueteRepository>();
             //service.AddScoped<RolRepositorio>();
             //service.AddScoped<UsuarioRepositorio>();
-            //VotacionesContext.BuildConnectionString(conn);
+            Proyecto_BKContext.BuildConnectionString(conn);
 
         }
 
