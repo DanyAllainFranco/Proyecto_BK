@@ -40,6 +40,17 @@ namespace Sistema_Votaciones.API
             services.BusinessLogic();
             services.AddAutoMapper(typeof(Startup));
             services.AddHttpContextAccessor();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowSpecificOrigin",
+                  builder =>
+                  {
+                      builder.WithOrigins(/*""*/)/*http://localhost:44334*/
+                             .AllowAnyHeader()
+                             .AllowAnyMethod()
+                             .AllowAnyOrigin();
+                  });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,6 +68,8 @@ namespace Sistema_Votaciones.API
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors("AllowAll");
 
             app.UseEndpoints(endpoints =>
             {
