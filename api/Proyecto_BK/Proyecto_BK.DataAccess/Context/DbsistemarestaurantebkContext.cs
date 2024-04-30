@@ -19,6 +19,7 @@ namespace Proyecto_BK.DataAccess
         {
         }
 
+      
         public virtual DbSet<tbAlimentos> tbAlimentos { get; set; }
         public virtual DbSet<tbBebidas> tbBebidas { get; set; }
         public virtual DbSet<tbCargos> tbCargos { get; set; }
