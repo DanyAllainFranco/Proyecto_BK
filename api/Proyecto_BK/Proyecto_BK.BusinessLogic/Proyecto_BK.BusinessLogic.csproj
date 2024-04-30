@@ -8,8 +8,4 @@
     <ProjectReference Include="..\Proyecto_BK.DataAccess\Proyecto_BK.DataAccess.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
-
 </Project>

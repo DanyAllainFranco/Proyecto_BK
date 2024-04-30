@@ -52,17 +52,21 @@ namespace Proyecto_BK.API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Proyecto_BK.API v1"));
+
+
             }
 
+            app.UseSwagger();
+            app.UseSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+            });
+
             app.UseHttpsRedirection();
-
+            app.UseStaticFiles();
             app.UseRouting();
-
+            app.UseCors("MyAllowAnyOriginPolicy");
             app.UseAuthorization();
-
-            app.UseCors("AllowAll");
 
             app.UseEndpoints(endpoints =>
             {
