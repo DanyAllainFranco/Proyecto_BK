@@ -12,25 +12,25 @@ namespace Proyecto_BK.DataAccess.Repository
 {
     public partial class EstadoCivilRepository : IRepository<tbEstadosCiviles>
     {
-        public RequestStatus Delete(int? id)
+        public RequestStatus Delete(int? Esta_Id)
         {
             using (var db = new SqlConnection(Proyecto_BKContext.ConnectionString))
             {
                 var parameter = new DynamicParameters();
-                parameter.Add("Esta_Id", id);
+                parameter.Add("Esta_Id", Esta_Id);
 
                 var result = db.QueryFirst(ScriptsBaseDeDatos.Esta_Eliminar, parameter, commandType: CommandType.StoredProcedure);
                 return new RequestStatus { CodeStatus = result.Resultado, MessageStatus = (result.Resultado == 1) ? "Éxito" : "Error" };
             }
         }
 
-        public tbEstadosCiviles Find(int? id)
+        public tbEstadosCiviles Find(int? Esta_Id)
         {
             tbEstadosCiviles result = new tbEstadosCiviles();
             using (var db = new SqlConnection(Proyecto_BKContext.ConnectionString))
             {
                 var parameter = new DynamicParameters();
-                parameter.Add("Esta_Id", id);
+                parameter.Add("Esta_Id", Esta_Id);
                 result = db.QueryFirst<tbEstadosCiviles>(ScriptsBaseDeDatos.Esta_Llenar, parameter, commandType: CommandType.StoredProcedure);
                 return result;
             }

@@ -27,14 +27,14 @@ namespace Proyecto_BK.API.Controllers
         {
 
             var list = _generalServices.ListDepto();
-            return Ok(list);
+            return Ok(list.Data);
         }
         [HttpGet("API/[controller]/Fill")]
 
         public IActionResult Fill(string Dept_Codigo)
         {
 
-            var list = _generalServices.ListDepto(Dept_Codigo);
+            var list = _generalServices.LlenarDepto(Dept_Codigo);
             return Ok(list);
         }
 
